@@ -16,6 +16,6 @@ start() {
 }
 
 dt() {
-	cd $DT
+  cd $DT
 }
 
