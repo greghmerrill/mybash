@@ -16,6 +16,7 @@ log() {
     less $DT/log.txt
   else
     $@ 2>&1 | tee $DT/log.txt
+    return $PIPESTATUS
   fi
 }
 
