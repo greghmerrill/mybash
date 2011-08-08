@@ -11,10 +11,10 @@ alias sql='rlwrap -b "" -f ~/.sql.dict sqlplus'
 #   log ls -l
 # If no args are given, opens the default desktop log file
 #
-# Prior to the command arguments, the caller can optionally provide "-a".  
+# Prior to the command arguments, the caller can optionally provide "-a".  This will
+# append to $DT/log.txt instead of overwriting.
 log() {
   local args=$@
-  local append=
   if [ "-a" = $1 ]; then
     local append="-a"
     args=${@#-a}
