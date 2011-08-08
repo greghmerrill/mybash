@@ -10,11 +10,20 @@ alias sql='rlwrap -b "" -f ~/.sql.dict sqlplus'
 # For example, the following will perform a long listing and save the results to $DT/log.txt:
 #   log ls -l
 # If no args are given, opens the default desktop log file
+#
+# Prior to the command arguments, the caller can optionally provide "-a".  
 log() {
+  local args=$@
+  local append=
+  if [ "-a" = $1 ]; then
+    local append="-a"
+    args=${@#-a}
+  fi
+
   if [ 0 = $# ]; then
     less $DT/log.txt
   else
-    $@ 2>&1 | tee $DT/log.txt
+    $args 2>&1 | tee $append $DT/log.txt
     return $PIPESTATUS
   fi
 }
