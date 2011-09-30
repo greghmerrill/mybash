@@ -1,5 +1,6 @@
 export PS1='\[\e]0;\w\a\]\n\[\e[32m\]*\h* \[\e[33m\]\w\[\e[0m\]\n\$ '
 export HISTSIZE=20000
+export PATH=".:$PATH"
 
 shopt -s cdable_vars
 
