@@ -33,6 +33,19 @@ dt() {
   cd $DT
 }
 
+# Changes the current window title to the parameters passed
+# Note that this change will not be retained if PS1 sets the window title
+title() {
+	echo -e "\033]2;$*\007"
+}
+
+# Overrides ssh to set the current window title to the given ssh host, then call ssh, then restore the window title
+realssh=$(which ssh)
+ssh() {
+	title $*
+	bash -c "$realssh $@"
+}
+
 export IS_CYGWIN=false
 if [ "$(uname -a | grep -i cygwin)" ]; then
   export IS_CYGWIN=true
