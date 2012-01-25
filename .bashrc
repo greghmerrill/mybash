@@ -47,6 +47,11 @@ ssh() {
 	bash -c "$realssh $@"
 }
 
+# Lists the disk space used by members of the current directory in descending order
+disk() {
+  du -k * | sort -nr | cut -f2 | xargs -d '\n' du -sh
+}
+
 export IS_CYGWIN=false
 if [ "$(uname -a | grep -i cygwin)" ]; then
   export IS_CYGWIN=true
