@@ -2,18 +2,20 @@ export PS1='\[\e]0;\w\a\]\n\[\e[32m\]*\h* \[\e[33m\]\w\[\e[0m\]\n\$ '
 export HISTSIZE=20000
 export PATH=".:$PATH"
 
+export LOG=~/.log.txt
+
 shopt -s cdable_vars
 
 alias ll='ls -l'
 alias sql='rlwrap -b "" -f ~/.sql.dict sqlplus'
 
 # Executes all args as a command and captures stdin/stdout to the default desktop log file
-# For example, the following will perform a long listing and save the results to $DT/log.txt:
+# For example, the following will perform a long listing and save the results to $LOG:
 #   log ls -l
 # If no args are given, opens the default desktop log file
 #
 # Prior to the command arguments, the caller can optionally provide "-a".  This will
-# append to $DT/log.txt instead of overwriting.
+# append to $LOG instead of overwriting.
 log() {
   local args=$@
   if [ "-a" = $1 ]; then
@@ -22,9 +24,9 @@ log() {
   fi
 
   if [ 0 = $# ]; then
-    less $DT/log.txt
+    less $LOG
   else
-    $args 2>&1 | tee $append $DT/log.txt
+    $args 2>&1 | tee $append $LOG
     return $PIPESTATUS
   fi
 }
