@@ -46,7 +46,7 @@ title() {
 realssh=$(which ssh)
 ssh() {
 	title $*
-	bash -c "$realssh $@"
+	bash -c "$realssh -F ~/.ssh/config $@"
 }
 
 # Lists the disk space used by members of the current directory in descending order
