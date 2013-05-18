@@ -14,3 +14,7 @@ done
 e() {
   "$NPP" "$@" &
 }
+
+chrome() {
+  /cygdrive/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe $(cygpath -aw "$@")
+}
