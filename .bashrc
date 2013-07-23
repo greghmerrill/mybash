@@ -6,7 +6,7 @@ export LOG=~/.log.txt
 
 shopt -s cdable_vars
 
-alias ll='ls -l'
+alias ll='ls -lh'
 alias sql='rlwrap -b "" -f ~/.sql.dict sqlplus'
 
 # Executes all args as a command and captures stdin/stdout to the default desktop log file
