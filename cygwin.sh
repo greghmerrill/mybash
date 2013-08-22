@@ -1,6 +1,7 @@
 # cygwin-specific environment settings
 
 export DT="$(cygpath -ua $USERPROFILE)/Desktop"
+export DOWNLOADS="$(cygpath -ua $USERPROFILE)/Downloads"
 export NPP="/cygdrive/c/Program Files (x86)/Notepad++/notepad++.exe"
 export NPP_PY="$(cygpath -ua $APPDATA)/Notepad++/plugins/config/PythonScript/scripts"
 
