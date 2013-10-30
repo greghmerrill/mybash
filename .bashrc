@@ -62,3 +62,5 @@ fi
 if $IS_CYGWIN; then
   . ~/mybash/cygwin.sh
 fi
+
+. ~/mybash/acd_func.sh
