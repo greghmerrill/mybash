@@ -8,6 +8,7 @@ shopt -s cdable_vars
 
 alias ll='ls -lh'
 alias sql='rlwrap -b "" -f ~/.sql.dict sqlplus'
+alias sshconf='cd ~ && e .ssh/config && cd -'
 
 # Executes all args as a command and captures stdin/stdout to the default desktop log file
 # For example, the following will perform a long listing and save the results to $LOG:
@@ -42,9 +43,7 @@ title() {
 	echo -e "\033]2;$*\007"
 }
 
-# Overrides ssh to set the current window title to the given ssh host, then call ssh, then restore the window title
-realssh=$(which ssh)
-ssh() {
+sshwin() {
 	title $*
 	bash -c "$realssh $@"
 }
@@ -62,3 +61,21 @@ fi
 if $IS_CYGWIN; then
   . ~/mybash/cygwin.sh
 fi
+
+patch() {
+  rsync --chmod=a+rwx $1 $2:$3
+  ssh $2 ls -l $(dirname $3)
+}
+
+_ssh() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts=$(grep '^Host' ~/.ssh/config | grep -v '[?*]' | cut -d ' ' -f 2-)
+
+    COMPREPLY=( $(compgen -W "$opts" -- ${cur}) )
+    return 0
+}
+complete -F _ssh ssh
