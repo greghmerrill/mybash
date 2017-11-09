@@ -19,3 +19,12 @@ e() {
 chrome() {
   /cygdrive/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe $(cygpath -aw "$@")
 }
+
+web() {
+  /cygdrive/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe "$@"
+}
+export -f web
+
+jmx() {
+  grep -A1 $1 ~/.ssh/config  | tail -n1 | sed 's/Hostname \(.*\)$/\1/i' | xargs -i bash -c 'web http://{}:8080/jmx-console/ &'
+}
