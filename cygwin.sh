@@ -26,7 +26,7 @@ web() {
 export -f web
 
 jmx() {
-  grep -A1 $1 ~/.ssh/config  | tail -n1 | sed 's/Hostname \(.*\)$/\1/i' | xargs -i bash -c 'web http://{}:8080/jmx-console/ &'
+  grep -A1 $1 ~/.ssh/config  | tail -n1 | sed 's/Hostname \(.*\)$/\1/i' | sed 's/ //' | xargs -i bash -c 'web http://{}:8080/jmx-console/ &'
 }
 
 complete -F _ssh jmx
