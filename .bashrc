@@ -1,4 +1,4 @@
-export PS1='\[\e]0;\w\a\]\n\[\e[32m\]*\h* \[\e[33m\]\w\[\e[0m\]\n\$ '
+export PS1='\[\e]0;\w\a\]\n\[\e[32m\]*\h $(date +%H:%M:%S)* \[\e[33m\]\w\[\e[0m\]\n\$ '
 export HISTSIZE=20000
 export PATH=".:$PATH"
 
@@ -9,6 +9,7 @@ shopt -s cdable_vars
 alias ll='ls -lh'
 alias sql='rlwrap -b "" -f ~/.sql.dict sqlplus'
 alias sshconf='cd ~ && e .ssh/config && cd -'
+alias sshkh='cd ~ && e .ssh/known_hosts && cd -'
 
 # Executes all args as a command and captures stdin/stdout to the default desktop log file
 # For example, the following will perform a long listing and save the results to $LOG:
