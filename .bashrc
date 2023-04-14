@@ -10,6 +10,7 @@ alias ll='ls -lh'
 alias sql='rlwrap -b "" -f ~/.sql.dict sqlplus'
 alias sshconf='cd ~ && e .ssh/config && cd -'
 alias sshkh='cd ~ && e .ssh/known_hosts && cd -'
+alias bashrc='cd ~ && e .bashrc && cd -'
 
 # Executes all args as a command and captures stdin/stdout to the default desktop log file
 # For example, the following will perform a long listing and save the results to $LOG:
