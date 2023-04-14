@@ -51,8 +51,11 @@ sshwin() {
 }
 
 # Lists the disk space used by members of the current directory in descending order
-disk() {
-  du -k * | sort -nr | cut -f2 | xargs -d '\n' du -sh
+disk ()
+{
+    lines=${1:-20};
+    echo Finding top $lines consumers of disk space in current dir \(provide additional argument to disk change limit\):;
+    du -h -d 0 -h -k $(find . -mindepth 1 -maxdepth 1 -name "*") 2> /dev/null | sort -nr | cut -f2 | xargs -d '\n' du -sh 2> /dev/null | head -n $lines
 }
 
 export IS_CYGWIN=false
