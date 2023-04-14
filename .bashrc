@@ -81,3 +81,7 @@ _ssh()
     return 0
 }
 complete -F _ssh ssh
+
+gdc () {
+  git diff $1~ $1
+}
