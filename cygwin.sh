@@ -13,7 +13,7 @@ done
 
 # Open an Editor on the given file(s)
 e() {
-  "$NPP" "$@" &
+  "$NPP" $(cygpath -a -w "$@") &
 }
 
 chrome() {
